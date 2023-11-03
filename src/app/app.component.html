@@ -1,0 +1,75 @@
+
+<div class="w-full flex items-center justify-center p-20 " *ngIf="!check">
+
+  <div class=" w-80 h-80 text-center border-green-400 border p-10 space-y-4">
+    <p class="text-3xl text-center">Enter Username</p>
+    <div class="w-full p-2">
+      <input  [(ngModel)]="name" class="flex items-center h-16 border  w-full rounded px-3 text-sm" type="text" placeholder="Enter username…">
+    </div>
+    <div>
+      <button class="w-full p-4 bg-green-600 text-white" (click)="startChat(name)">Start Chatting</button>
+    </div>
+  </div>
+</div>
+
+
+<div class=" w-full flex" *ngIf="check">
+  <div class="flex w-full h-[550px] flex-col items-center justify-center  bg-gray-100 text-gray-800 ">
+    <!-- Component Start -->
+      <div class="w-full text-center text-4xl font-semibold p-4">
+          {{name}}
+      </div>
+    <div class="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
+      <div class="flex flex-col flex-grow h-0 p-4 overflow-auto">
+        <div class="flex w-full mt-2 space-x-3 max-w-xs" >
+          <div class="flex-shrink-0 h-20 w-20 rounded-full p-4 bg-gray-300">{{name}}</div>
+          <div >
+            <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg m-5" *ngFor="let msg of messages" >
+              <p class="text-sm">{{msg}}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="bg-gray-300 p-4 flex">
+        <input [(ngModel)]="message" (keydown.enter)="sendMessage()" class="flex items-center h-10 w-full rounded px-3 text-sm" type="text" placeholder="Type your message…">
+              <!-- <button (click)="sendMessage()">Send</button> -->
+      </div>
+    </div>
+  
+      </div>
+    <!-- Component End  -->
+  
+  
+</div>
+
+<!-- <div id="main-content" class="container ">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="connect">WebSocket connection:</label>
+          <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
+          <button (click)="disconnect()" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="name">What is your name?</label>
+          <input type="text" [(ngModel)]="name" class="form-control" name="name"> <br>
+        </div>
+        <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" *ngFor="let item of messages">
+       <p>{{item}}</p>
+    </div>
+  </div>
+</div> -->
+<router-outlet></router-outlet>
